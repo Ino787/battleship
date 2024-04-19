@@ -1,6 +1,8 @@
 html {
     height: 100%;
-    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
   }
 
 body {
@@ -10,18 +12,20 @@ body {
     flex-direction: column;
   }
 
-.header {
+#header {
  border: 1px solid green;
  text-align: center;
- font-size: 150%;
+ font-size: 200%;
 }
 
-.main {
+#main {
   flex-grow: 1;
-  border: 1px solid orange;
+  border: 5px solid grey;
+  display: flex;
+  flex-direction: column;
 }
 
-.footer {
+#footer {
   border: 1px solid black;
   background-color: rgb(168 85 247);
   color: white;
