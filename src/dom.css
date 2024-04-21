@@ -1,8 +1,7 @@
 #gameboard {
     display: grid;
-    grid-template-columns: repeat(10, 50px); 
-    grid-template-rows: repeat(10, 50px); 
-    border: 1px solid yellow;
+    grid-template-columns: repeat(10, 45px); 
+    grid-template-rows: repeat(10, 40px); 
     align-self: center;
 }
 
@@ -13,7 +12,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 75%;
 }
 
 #gameboard div {
@@ -23,14 +21,14 @@
 #gamebuttons {
     border: 1px solid black;
     display: flex;
-    height: 15%;
+    height: 50%;
     gap: 10px;
     justify-content: center;
 }
 
 .button {
     border: 1px solid black;
-    height: 35%;
+    height: 50%;
     width: 10%;
     background-color: pink;
     color: black;
@@ -43,13 +41,16 @@
     display: flex;
     border: 1.25px solid purple;
     gap: 10px;
-    height: 10%;
+    height: 40%;
     justify-content: center;
 }
 
 .ship {
-    display: grid;
-    
+    display: flex;    
+}
+
+.rotate {
+    flex-direction: column;
 }
 
  .ship div {
@@ -59,28 +60,22 @@
 
 
 #ship-one {
-    grid-template-columns: repeat(2, 50px); 
-    grid-template-rows: repeat(2, 50px); 
 }
 
 #ship-two  {
-    grid-template-columns: repeat(3, 50px); 
-    grid-template-rows: repeat(3, 50px); 
-
 }
 
 #ship-three  {
-    grid-template-columns: repeat(3, 50px); 
-    grid-template-rows: repeat(3, 50px); 
 
 }
 
 #ship-four {
-    grid-template-columns: repeat(4, 50px); 
-    grid-template-rows: repeat(4, 50px); 
 }
 
 #ship-five  {
-    grid-template-columns: repeat(5, 50px); 
-    grid-template-rows: repeat(5, 50px); 
+}
+
+.ship div {
+    height: 35px;
+    width: 50px;
 }
