@@ -9,19 +9,20 @@ function createGameboardDOM() {
   var gameboard = document.createElement("div");
   gameboard.id = "gameboard"
   gameboardcontainer.appendChild(gameboard);
+  var board = []
 
   for (let y = 0; y < 10; y++) {
+  board.push([]);
 
   for (let x = 0; x < 10; x++) {
   var div = document.createElement("div");
   div.dataset.y = y;  
   div.dataset.x = x;
   gameboard.appendChild(div);
+  board[y].push({place: div, shipReferral: null, beenAttacked: false })
     }
-
   }
-
-   return gameboard;
+   return {domBoard: gameboard, board: board}; 
 }
 
 

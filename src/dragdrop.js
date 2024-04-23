@@ -18,7 +18,7 @@ function attachDraggableAttributetoShips() {
 
  function attachDragOverEventListenertoGrid() {
     var gameboard = document.getElementById('gameboard-container');
-    var gameboardElements = gameboard.children;
+    var gameboardElements = Array.from(gameboard.children);
 
     gameboardElements.forEach((gameboardElement) => {
     gameboardElement.addEventListener('dragover', function (event) {
@@ -27,14 +27,20 @@ function attachDraggableAttributetoShips() {
             });
 }
 
- function attachDropEventListenertoGrid() {
+function attachDropEventListenertoGrid(playerboard) {
     var gameboard = document.getElementById('gameboard-container');
-    var gameboardElements = gameboard.children;
+    var gameboardElements = Array.from(gameboard.children);
 
     gameboardElements.forEach((gameboardElement) => {
     gameboardElement.addEventListener('drop', function (event) {
     event.preventDefault();
-    });
+    var shipName = event.dataTransfer.getData("text");
+    var shipDOM = document.getElementById(shipName); 
+    var length = parseInt(shipDOM.dataset.length); 
+    var shipObject = playerboard.retrieveShip(shipName);  
+    var coordinates = {x: parseInt(event.target.dataset.x), y: parseInt(event.target.dataset.y)};
+    playerboard.placeShip(coordinates, shipObject, playerboard);
+});
 });
 
  }

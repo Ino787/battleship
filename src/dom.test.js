@@ -12,8 +12,10 @@ beforeEach(() => {
     
 
 
-it('should create a dom gameboard', () => {
-    const gameboardDOM = createGameboardDOM();
+it('should create a dom gameboard and a board', () => {
+    const gameboardDOM = createGameboardDOM().domBoard;
+    const board = createGameboardDOM().board;
+
 
     expect(document.body.contains(gameboardDOM)).toBe(true);
 
@@ -41,6 +43,12 @@ it('should create a dom gameboard', () => {
 
     expect(gameboardDOM.children.length).toBe(100);
 
+    expect(board[0][0].place).toStrictEqual(gameboardDOM.children[0]);
+    expect(board[0][1].place).toStrictEqual(gameboardDOM.children[1]);
+    expect(board[0][2].place).toStrictEqual(gameboardDOM.children[2]);
+    expect(board[1][0].place).toStrictEqual(gameboardDOM.children[10]);
+    expect(board.length).toBe(10); 
+    expect(board[0].length).toBe(10);      
 });
 
 
