@@ -15,13 +15,23 @@ function gameboard(board, ships) {
   var shipObject = ships.filter((ship) => ship.name == name)[0];
   return shipObject;
 }
-}
 
+this.rotate = function() {
+  var shipsToRotate = this.ships.filter((ship) => !ship.isPlaced);
+  shipsToRotate.map((ship) => ship.isRotated = true);
+  ['ship-one', 'ship-two', 'ship-three', 'ship-four', 'ship-five'].forEach(id => {
+    var ship = document.getElementById(id);
+    if (ship) {
+        ship.classList.add('rotate');
+    }
+});
+  }
+}
 
 function placeShipVertical(coordinates, someshipobject, playerboard) {
   if (ensureEnoughPlacesAreAvailIfVertical(coordinates, someshipobject)) {
     if (checkIfCellsAreEmptyIfVertical(coordinates, someshipobject.length, playerboard)) {
-      return placeShipVerticalHelper(coordinates, shipobj, playerboard, someshipobject.length);
+      return placeShipVerticalHelper(coordinates, someshipobject, playerboard, someshipobject.length);
     }
     else {
       return console.log('error');

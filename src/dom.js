@@ -76,10 +76,14 @@ function createStartandRotateButtonsDOM() {
   var startButton = document.createElement("div");
   startButton.className = 'button'
   startButton.textContent = 'Start';
+  startButton.id = 'Start';
+
 
   var rotateButton = document.createElement("div");
   rotateButton.className = 'button'
   rotateButton.textContent = 'Rotate';
+  rotateButton.id = 'Rotate';
+
 
   gameButtonsContainer.appendChild(startButton);
 

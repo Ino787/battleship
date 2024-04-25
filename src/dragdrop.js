@@ -15,7 +15,6 @@ function attachDraggableAttributetoShips() {
             });
 }
 
-
  function attachDragOverEventListenertoGrid() {
     var gameboard = document.getElementById('gameboard-container');
     var gameboardElements = Array.from(gameboard.children);
