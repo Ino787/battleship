@@ -6,11 +6,11 @@ function attachClickEventListenerToRotateButton(gameboard) {
     });
 }
 
-function attachClickEventListenerToStartButton(game) {
+function attachClickEventListenerToStartButton(game, gameboard) {
     var startButton = document.getElementById('Start');
     startButton.addEventListener('click', function (event) {
-        game.startGame();
+        game.gameStart(gameboard);
     });
 }
 
-export {attachClickEventListenerToRotateButton};
+export {attachClickEventListenerToRotateButton, attachClickEventListenerToStartButton};

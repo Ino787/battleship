@@ -98,6 +98,5 @@ it('should create a dom buttons', () => {
   });
 
 
-
 });
 

@@ -4,7 +4,8 @@ import {createGameboardDOM, createShipsDOM, createShipDOM, createStartandRotateB
 import {attachDraggableAttributetoShips, attachDragStartEventListenertoShips, attachDragOverEventListenertoGrid, attachDropEventListenertoGrid} from './dragdrop.js'
 import {gameboard, placeShipVertical, ensureEnoughPlacesAreAvailIfVertical, countHowManyCellsAvail, checkIfCellsAreEmptyIfVertical, placeShipVerticalHelper, placeShipHorizantal, ensureEnoughPlacesAreAvailIfHorizantal, checkIfCellsAreEmptyIfHorizantal, placeShipHorizantalHelper} from'./gameboard.js'
 import { ship } from './ship.js'
-import {attachClickEventListenerToRotateButton} from './buttonevents.js'
+import {attachClickEventListenerToRotateButton, attachClickEventListenerToStartButton} from './buttonevents.js'
+import {game} from './game.js'
 
 const board = createGameboardDOM().board;
 const shipsDOM =  createShipsDOM();
@@ -29,6 +30,13 @@ attachDragOverEventListenertoGrid();
 attachDropEventListenertoGrid(playerboard);
 
 attachClickEventListenerToRotateButton(playerboard);
+
+const myGame = new game();
+
+attachClickEventListenerToStartButton(myGame, playerboard);
+
+
+
 
 
 console.log('testing webpack');

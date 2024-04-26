@@ -5,8 +5,8 @@ import {Enemygameboard} from './Enemygameboard.js'
 function game() {
     this.player = null;
     this.Enemyplayer = null;
-    this.gameStart = function(gameboard) {
-     if (gameboard.ships.filter((ship) => ship.isPlaced).length == 5) {
+    this.gameStart = function(someGameboard) {
+     if (someGameboard.ships.filter((ship) => ship.isPlaced).length == 5) {
      var Enemyboard = createEnemyGameboardDOM().board;
      var ship1 = new ship('ship-one', 2);
      var ship2 = new ship('ship-two', 3);
@@ -15,7 +15,9 @@ function game() {
      var ship5 = new ship('ship-five', 5);
      var ships = [ship1, ship2, ship3, ship4, ship5 ]    
      var enemyplayerboard = new Enemygameboard(Enemyboard, ships); 
-     placeEnemyShips(enemyplayerboard);        
+     placeEnemyShips(enemyplayerboard, 0);     
+     return enemyplayerboard;
+    //remove start and rotate buttons...
     //create playerobjects
     //attach an event listener to the enemydom grid..
     //define player.js in other file..
@@ -29,17 +31,27 @@ function game() {
     }
     }
 
-function placeEnemyShips(someenemyplayerboard) {
-someenemyplayerboard.ships.map((shipobj) => {
-coordinates = getRandomCoordinates(shipobj.length)
-someenemyplayerboard.placeShip(coordinates, shipobj, someenemyplayerboard)
+function placeEnemyShips(someEnemyplayerboard) {
+var shipstoPlace = someEnemyplayerboard.ships.filter((shipobj) => !shipobj.isPlaced);
+if (shipstoPlace.length == 0) 
+{
+
+}
+else {
+shipstoPlace.map((shipobj) => {
+var coordinates = getRandomCoordinates(shipobj.length)
+someEnemyplayerboard.placeShip(coordinates, shipobj, someEnemyplayerboard)
+var newPlacedShipsCount = someEnemyplayerboard.ships.filter((ship) => ship.isPlaced).length;
+placeEnemyShips(someEnemyplayerboard);
 });
 }
+}
+
 
 function getRandomCoordinates(length) {
   var max = 10 - length;
-  randomnumx = getRandomInt(some-num);
-  randomnumy = getRandomInt(9);
+  var randomnumx = getRandomInt(max);
+  var randomnumy = getRandomInt(9);
   return {y: randomnumy, x: randomnumx};
 }
 
@@ -48,3 +60,5 @@ function getRandomInt(max) {
     }
 
 //now test that the enemy dom is created and the enemy ships are placed
+
+export { game }

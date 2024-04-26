@@ -2,8 +2,19 @@
     display: grid;
     grid-template-columns: repeat(10, 45px); 
     grid-template-rows: repeat(10, 40px); 
-    align-self: center;
 }
+
+#enemy-gameboard {
+    display: grid;
+    grid-template-columns: repeat(10, 45px); 
+    grid-template-rows: repeat(10, 40px); 
+}
+
+#enemy-gameboard div {
+    border: 1px solid black;
+
+}
+
 
 #gameboard-container {
     flex-grow: 1;
@@ -11,6 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 15%;
 }
 
 #gameboard div {
