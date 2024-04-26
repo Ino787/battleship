@@ -25,6 +25,27 @@ function createGameboardDOM() {
    return {domBoard: gameboard, board: board}; 
 }
 
+function createEnemyGameboardDOM() {
+  var gameboardcontainer = document.getElementById('gameboard-container');
+  var Enemygameboard = document.createElement("div");
+  Enemygameboard.id = "enemy-gameboard"
+  gameboardcontainer.appendChild(Enemygameboard);
+  var board = []
+
+  for (let y = 0; y < 10; y++) {
+  board.push([]);
+
+  for (let x = 0; x < 10; x++) {
+  var div = document.createElement("div");
+  div.dataset.y = y;  
+  div.dataset.x = x;
+  Enemygameboard.appendChild(div);
+  board[y].push({place: div, shipReferral: null, beenAttacked: false })
+    }
+  }
+   return {domBoard: Enemygameboard, board: board}; 
+}
+
 
 
 
@@ -93,4 +114,4 @@ function createStartandRotateButtonsDOM() {
 
 }
 
-export {createGameboardDOM, createShipsDOM, createShipDOM, createStartandRotateButtonsDOM};
+export {createEnemyGameboardDOM, createGameboardDOM, createShipsDOM, createShipDOM, createStartandRotateButtonsDOM};
