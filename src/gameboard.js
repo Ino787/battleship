@@ -86,12 +86,12 @@ function countHowManyCellsAvail(coordinate, CellCount) {
       var div = playerboard.board[coordinates.y][coordinates.x].place
       div.classList.add("blue-background");
       playerboard.board[coordinates.y][coordinates.x].shipReferral = shipobj;
-      shipobj.isPlaced = true;
       return placeShipVerticalHelper({x: coordinates.x, y: coordinates.y + 1}, shipobj, playerboard, length - 1);
     }
     else {
       var shipDOM = document.getElementById(shipobj.name);
       shipDOM.remove();
+      shipobj.isPlaced = true;
       return console.log('done placing')
     }
     }
@@ -141,12 +141,12 @@ function countHowManyCellsAvail(coordinate, CellCount) {
     var div = playerboard.board[coordinates.y][coordinates.x].place
     div.classList.add("blue-background");
     playerboard.board[coordinates.y][coordinates.x].shipReferral = shipobj;
-    shipobj.isPlaced = true;
     return placeShipHorizantalHelper({x: coordinates.x + 1, y: coordinates.y}, shipobj, playerboard, length - 1);
   }
   else {
     var shipDOM = document.getElementById(shipobj.name);
     shipDOM.remove();
+    shipobj.isPlaced = true;
     return console.log('done placing')
   }
   }

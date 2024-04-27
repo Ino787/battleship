@@ -16,10 +16,10 @@ function Enemygameboard(board, ships) {
 function placeEnemyShipVerticalHelper(coordinates, shipobj, playerboard, length) {
     if (length != 0) {
     playerboard.board[coordinates.y][coordinates.x].shipReferral = shipobj;
-    shipobj.isPlaced = true;
     return placeEnemyShipVerticalHelper({x: coordinates.x, y: coordinates.y + 1}, shipobj, playerboard, length - 1);
   }
   else {
+    shipobj.isPlaced = true;
     return console.log('done placing')
   }
   }
@@ -27,10 +27,10 @@ function placeEnemyShipVerticalHelper(coordinates, shipobj, playerboard, length)
   function placeEnemyShipHorizantalHelper(coordinates, shipobj, playerboard, length) {
     if (length != 0) {
     playerboard.board[coordinates.y][coordinates.x].shipReferral = shipobj;
-    shipobj.isPlaced = true;
     return placeEnemyShipHorizantalHelper({x: coordinates.x + 1, y: coordinates.y}, shipobj, playerboard, length - 1);
   }
   else {
+    shipobj.isPlaced = true;
     return console.log('done placing')
   }
   }

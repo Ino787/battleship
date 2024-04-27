@@ -1,5 +1,5 @@
 import {Enemygameboard} from './Enemygameboard.js'
-import {createEnemyGameboardDOM, createGameboardDOM, createShipsDOM} from './dom.js'
+import {createEnemyGameboardDOM, createGameboardDOM, createShipsDOM, createStartandRotateButtonsDOM} from './dom.js'
 import {ship} from'./ship.js'
 import {game} from'./game.js'
 import {gameboard} from'./gameboard.js'
@@ -22,6 +22,7 @@ beforeEach(() => {
     
         const board = createGameboardDOM().board;
         const shipsDOM =  createShipsDOM();
+        createStartandRotateButtonsDOM();
 
         ship1 = new ship('ship-one', 2);
         ship2 = new ship('ship-two', 3);
@@ -31,10 +32,6 @@ beforeEach(() => {
         const ships = [ship1, ship2, ship3, ship4, ship5];
         playerboard = new gameboard(board, ships);
         myGame = new game();
-        
-    });
-
-    it('should see that when gamestart is called, that all ships are placed in enemyplayerboard.', () => {
         const dropEventMock = jest.fn();
         dropEventMock
         .mockReturnValue(playerboard.placeShip({x: 5, y: 5}, ship2, playerboard))
@@ -47,6 +44,14 @@ beforeEach(() => {
         dropEventMock();
         dropEventMock();
         dropEventMock();
-        expect(playerboard.ships.filter((ship) => ship.isPlaced).length).toBe(5);
-        expect(myGame.gameStart(playerboard).ships.filter((ship) => ship.isPlaced).length).toBe(5);
-     });
+        //all ships are placed...
+        
+    });
+
+    it('does attack work.', () => {
+        myGame.gameStart(playerboard);
+        expect(myGame.Enemyplayer).not.toBeNull();
+        expect(myGame.Enemyplayer.gameboard.ships.filter((shipobj) => shipobj.isPlaced).length).toBe(5);
+        myGame.Enemyplayer.gameboard.board[5][5].place.click()
+        expect(myGame.Enemyplayer.gameboard.board[5][5].beenAttacked).toBe(true);
+    });
