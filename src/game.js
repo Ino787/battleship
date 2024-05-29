@@ -2,6 +2,7 @@ import { createEnemyGameboardDOM } from './dom.js'
 import { ship } from './ship.js'
 import {Enemygameboard} from './Enemygameboard.js'
 import {Player} from './player.js'
+import './game.css'
 
 function game() {
     this.player = null;
@@ -17,10 +18,15 @@ function game() {
      var ships = [ship1, ship2, ship3, ship4, ship5]    
      var enemyplayerboard = new Enemygameboard(Enemyboard, ships); 
      placeEnemyShips(enemyplayerboard, enemyplayerboard.ships);    
-     var startButton = document.getElementById('Start');
-     var rotateButton = document.getElementById('Rotate');
-     startButton.remove();
-     rotateButton.remove();
+     var shipContainer = document.getElementById("ship-container");
+     shipContainer.remove();
+     var gameButtons= document.getElementById("gamebuttons");
+     gameButtons.remove();
+     var mainDiv = document.querySelector('#main');
+     var textContainer = document.createElement("div");
+     textContainer.id = "text-container"
+     mainDiv.insertBefore(textContainer, mainDiv.firstChild);
+     textContainer.innerText = "SINK ALL ENEMY SHIPS TO WIN!"
      this.Enemyplayer = new Player(enemyplayerboard);
      this.player = new Player(someGameboard);
      attachReceiveAttackEventToGrid(this);
@@ -31,7 +37,8 @@ function game() {
     enemyboardDOMElements.forEach((enemyboardDOMElement) => {
     enemyboardDOMElement.removeEventListener('click', handleClickFunction);
         });
-    console.log('game over');
+        var textContainer = document.querySelector('#text-container');
+        textContainer.innerText = "GAME HAS ENDED!"
     }
 
     this.checkIfGameEnd = function(someplayer) {
